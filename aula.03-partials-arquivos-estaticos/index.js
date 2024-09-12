@@ -4,60 +4,63 @@ const express = require("express"); // CommonJS Modules
 const app = express();
 
 // Definindo o EJS como renderizador de páginas
-app.set('view engine', 'ejs')
+app.set("view engine", "ejs");
+
+// Definir a pasta dos arquivos estáticos (public)
+app.use(express.static('public'));
 
 // CRIANDO A ROTA PRINCIPAL
 app.get("/", (req, res) => {
   // Será renderizada a página index.ejs que está na pasta 'views'
-  res.render('index');
+  res.render("index");
 });
 
 // ROTA PERFIL
 // :nome é um parâmetro obrigatório
 // :nome? é um parâmetro opcional
-app.get("/perfil/nome", (req, res) => {
+app.get("/perfil", (req, res) => {
   const nome = req.params.nome;
-  res.render('perfil')
+  res.render("perfil");
 
-  nome: nome
+  nome: nome;
 });
 
 // ROTA DE VÍDEOS
 // :playlist? e :video? - parâmetros opcionais
 app.get("/videos", (req, res) => {
-  res.render('videos')
+  res.render("videos");
 });
 
 // ROTA DE PRODUTOS
 app.get("/produtos/:produto?", (req, res) => {
-  const listaProdutos = ['Computador', 'Celular', 'Tablet', 'Notebook']
-  const produto = req.params.produto
+  const listaProdutos = ["Computador", "Celular", "Tablet", "Notebook"];
+  const produto = req.params.produto;
   res.render("produtos", {
     //Enviando a variável para página
     // Será chamado na página
     produto: produto, // Variável que está na index (req.params)
-    listaProdutos: listaProdutos
+    listaProdutos: listaProdutos,
     // Na página produtos.ejs haverá uma testagem de condição
-  })
+  });
 });
 
 // ROTA PEDIDOS
 app.get("/pedidos", (req, res) => {
   // ARRAY DE OBJETOS COM OS PEDIDOS
   const pedidos = [
-  {produto: "Celular", valor: 3000},
-  {produto: "Computador", valor: 4000},
-  {produto: "Tablet", valor: 2000},
-  {produto: "Notebook", valor: 3800}
-]
+    { produto: "Celular", valor: 3000 },
+    { produto: "Computador", valor: 4000 },
+    { produto: "Tablet", valor: 2000 },
+    { produto: "Notebook", valor: 3800 },
+  ];
   res.render("pedidos", {
     // Enviando o array de objetos para a página
-    pedidos: pedidos
-  })
+    pedidos: pedidos,
+  });
 });
 
 // Iniciando o servidor na porta 8080
-const port = 8080
+const port = 8080;
 app.listen(port, (error) => {
   if (error) {
     console.log(`Ocorreu um erro: ${error}`);
