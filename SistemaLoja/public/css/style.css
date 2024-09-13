@@ -1,3 +1,46 @@
+:root{
+   --cor1: #014040;
+   --cor2: #02735E;
+   --cor3: #BF6415;
+   --cor4: #03A678;
+   --cor5: #731702;
+}
+
+header,footer{
+    background-color: var(--cor1);
+}
+
+nav{
+    background-color: var(--cor2);
+}
+
+#link{
+    color: #f1f1f1;
+}
+
+footer{
+    color: #f1f1f1;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
 body{
-    
+    background-color: #f1f1f1;
+}
+
+main{
+    background-color: #D8FFDB;
+}
+
+main p{
+    padding: 10px 200px 0px 200px;
+}
+
+#titulo{
+
+    margin-top: 2vh;
+    color: #f1f1f1;
 }
