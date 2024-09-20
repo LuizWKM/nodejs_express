@@ -40,11 +40,12 @@ app.get("/",function(req,res){
 })
 
 // INICIA O SERVIDOR NA PORTA 8080
-app.listen(8080,function(erro){
+const port = 8080
+app.listen(port,function(erro){
     if(erro) {
         console.log("Ocorreu um erro!")
 
     }else{
-        console.log("Servidor iniciado com sucesso!")
+        console.log(`Servidor iniciado com sucesso, no http://localhost:${port}`)
     }
 })
