@@ -20,7 +20,7 @@
                         <tr>
                             <td><img src="imgs/order.png" width="30px"></td>
                             <td><%= pedido.numero %></td>
-                            <td><%= pedido.valor.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %></td>
+                            <td>R$<%= pedido.valor.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %></td>
                         </tr>
                         <% }) %>
                     </tbody>
