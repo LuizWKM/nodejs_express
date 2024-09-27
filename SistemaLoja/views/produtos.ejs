@@ -1,4 +1,32 @@
 <%- include ('partials/header.ejs') %>
 <%- include ('partials/navbar.ejs') %>
-
+<div class="container"></div>
+    <div class="card">
+      <div class="card-header">
+        <h1 class="d-flex justify-content-center">Produtos</h1>
+      </div>
+  <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Imagem</th>
+                    <th scope="col">Nome do Produto</th>
+                    <th scope="col">Preço</th>
+                    <th scope="col">Categoria</th>
+               </tr>
+            </thead>
+            <tbody>        
+                <tr>
+                    <% produtos.forEach((pro) => { %>
+                        <th scope="row"><img src="<%= pro.img %>" alt="" id="imagem" class="align-middle"></th>
+                        <td class="align-middle"><%= pro.nomep %></td>
+                        <td class="align-middle">R$<%= pro.pre %></td>
+                        <td class="align-middle"><%= pro.cat %></td>
+                </tr>
+            <% })%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 <%- include ('partials/footer.ejs') %>

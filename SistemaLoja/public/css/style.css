@@ -28,7 +28,10 @@ footer{
 }
 
 body{
-    background-color: #f1f1f1;
+    background-image: linear-gradient(to top,#99e7d9,#748884);
+    background-repeat: no-repeat;
+    background-size: cover;
+
 }
 
 main{
@@ -43,4 +46,13 @@ main p{
 
     margin-top: 2vh;
     color: #f1f1f1;
+}
+
+#imagem{
+    width: 5vw;
+}
+
+#imge{
+
+    width: 30%;
 }
