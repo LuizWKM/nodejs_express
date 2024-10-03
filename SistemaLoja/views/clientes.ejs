@@ -1,7 +1,32 @@
-<%- include ('partials/header.ejs') %>
+<%- include ('partials/header.ejs') %> 
 <%- include ('partials/navbar.ejs') %>
-
-
-
-
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h1 class="d-flex justify-content-center">Clientes</h1>
+    </div>
+    <div class="card-body">
+      <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">CPF</th>
+            <th scope="col">Endereço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <% cliente.forEach((cli) => { %>
+            <th scope="row"><%= cli.num %></th>
+            <td><%= cli.nome %></td>
+            <td><%= cli.cpf %></td>
+            <td><%= cli.endereco %></td>
+          </tr>
+          <% })%>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 <%- include ('partials/footer.ejs') %>
