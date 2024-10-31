@@ -4,12 +4,24 @@ import User from "../models/User.js";
 import bcrypt from "bcrypt"
 // ROTA DE LOGIN
 router.get("/login", (req,res) => {
-    res.render("login");
+    res.render("login", {
+        loggedOut: true,
+        messages: req.flash()
+    });
+});
+
+router.get("/logout", (req,res) =>{
+    req.flash('success',"Usuário fez logout com sucesso!")
+    req.session.user = undefined;
+    res.redirect("/");
 });
 
 // ROTA DE CADASTRO
 router.get("/cadastro", (req,res) => {
-    res.render("cadastro");
+    res.render("cadastro",{
+        loggedOut: true,
+        messages: req.flash()
+    });
 });
 
 // ROTA DE CRIAÇÃO DE USUÁRIO
@@ -30,9 +42,10 @@ router.post("/createUser", (req,res) => {
     });
        // CASO O USUÁRIO JÁ ESTEJA CADASTRADO:
     } else {
-
-        res.send('Usuário já cadastrado. <br> <a href ="/login">Faça login!</a>');
-     }
+        
+        req.flash('danger',"O usuário já está cadastrado! Faça o login.")
+                res.redirect("/cadastro")
+    }
     }); 
 });
 
@@ -51,15 +64,25 @@ router.post("/authenticate", (req,res) => {
             // VALIDA A SENHA (VERIFICA O HASH)
             const correct = bcrypt.compareSync(password, user.password)
             if(correct){
+                // AUTORIZA O LOGIN
+             req.session.user = {
+                id: user.id,
+                email: user.email
+             }
+             //res.send(`Usuário logado: <br> ID: ${req.session.user['id']}<br>Email: ${req.session.user['email']}`)
+             // ENVIAR UMA MENSAGEM DE SUCESSO
+             req.flash('success',"Login efetuado com sucesso!")
              res.redirect("/");
             } else{
-                res.send('Senha inválida! <br><a href="/login">Tente novamente!</a>')
+                req.flash('danger',"Senha informarda está incorreta! Tente novamente.")
+                res.redirect("/login")
             }
         }
         else{
             // SE O USUÁRIO NÃO EXISTE 
-            res.send('Usuário não cadastrado. <br>                       <a href ="/login">Tente novamente!</a>');
-        }
+            req.flash('danger',"Usuário informado não existe! Verifique os dados digitados.")
+            res.redirect("/login")
+            }
     })).catch((error) => {
         console.log(error);
     });
