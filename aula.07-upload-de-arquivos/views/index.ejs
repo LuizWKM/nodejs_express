@@ -12,9 +12,11 @@
     <div class="card">
         <div class="card-body">
             <div class="row">
+            <% imagens.forEach(imagem => { %> 
                 <div class="col-md-3 m-auto">
-                    <img src="uploads/6939642b4f8e02d6f52183c6d798d0a7" alt="Imagem não encontrada" class="img-thumbnail">
+                    <img src="/uploads/<%= imagem.file %>" alt="Imagem" class="img-thumbnail">
                 </div>
+           <% }) %>
             </div>
         </div>
         <form action="/upload" method="post" enctype="multipart/form-data" >
