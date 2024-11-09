@@ -42,7 +42,6 @@ router.post("/createUser", (req,res) => {
     });
        // CASO O USUÁRIO JÁ ESTEJA CADASTRADO:
     } else {
-        
         req.flash('danger',"O usuário já está cadastrado! Faça o login.")
                 res.redirect("/cadastro")
     }
