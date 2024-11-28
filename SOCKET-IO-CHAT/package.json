@@ -1,5 +1,5 @@
 {
-  "name": "aula.07-upload-de-arquivos",
+  "name": "socket-io-chat",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -9,15 +9,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "description": "",
   "dependencies": {
     "ejs": "^3.1.10",
     "express": "^4.21.1",
-    "multer": "^1.4.5-lts.1",
-    "mysql2": "^3.11.4",
     "nodemon": "^3.1.7",
-    "sequelize": "^6.37.5"
-  },
-  "type": "module",
-  "devDependencies": {},
-  "description": ""
+    "socket.io": "^4.8.1"
+  }
 }
